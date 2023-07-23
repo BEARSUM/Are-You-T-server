@@ -1,0 +1,37 @@
+import { Schema } from 'mongoose';
+
+export default new Schema(
+  {
+    // 사용자 uuid (일단 보류.)
+    uuid: {
+      type: String,
+      required: false,
+    },
+    // mbti 카테고리 (16개의 mbti)
+    category: {
+      type: String,
+      required: true,
+    },
+    // 게시글 내용
+    content: {
+      type: String,
+      required: true,
+    },
+    // 공감
+    like: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    // 비공감
+    dislike: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+  },
+  {
+    collection: 'boards',
+    timestamps: { currentTime: () => new Date(new Date().getTime() + 1000 * 60 * 60 * 9) },
+  }
+);
