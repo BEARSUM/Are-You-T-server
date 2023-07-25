@@ -1,3 +1,4 @@
 import BoardService from './boardService.js';
-// const boardService = require('./boardService').default;
-export { BoardService };
+import TestService from './testService.js';
+
+export { BoardService, TestService };

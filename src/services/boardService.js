@@ -6,6 +6,10 @@ class BoardService {
   constructor(boardModel) {
     this.boardModel = boardModel;
   }
+  async getBoards(category) {
+    const boards = await this.boardModel.find(category);
+    return boards;
+  }
   async postBoard(board) {
     const newBoard = await this.boardModel.create(board);
     return newBoard;
