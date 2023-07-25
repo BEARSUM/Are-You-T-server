@@ -1,4 +1,5 @@
 import BoardService from './boardService.js';
 import TestService from './testService.js';
+import QuestionService from './questionService.js';
 
-export { BoardService, TestService };
+export { BoardService, TestService, QuestionService };
