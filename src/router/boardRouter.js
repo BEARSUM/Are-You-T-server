@@ -6,10 +6,14 @@ import { asyncHandler } from '../middlewares/index.js';
 
 const boardRouter = Router();
 
+// 게시글 조회 (전체, mbti별)
 boardRouter.get(
-  '/',
+  '/:mbti',
   asyncHandler(async (req, res, next) => {
-    res.json(buildResponse({ msg: '겟' }));
+    const category = req.params.mbti;
+    console.log(category);
+    const boards = await BoardService.getBoards(category);
+    res.json(buildResponse(boards));
   })
 );
 
@@ -17,8 +21,8 @@ boardRouter.get(
 boardRouter.post(
   '/',
   asyncHandler(async (req, res, next) => {
-    const { uuid, category, content, like, dislike } = req.body;
-    const result = await BoardService.postBoard({ uuid, category, content, like, dislike });
+    const { category, content, like, dislike } = req.body;
+    const result = await BoardService.postBoard({ category, content, like, dislike });
     res.json(buildResponse({ msg: '등록 완료' }));
   })
 );
