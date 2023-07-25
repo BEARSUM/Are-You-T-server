@@ -8,11 +8,10 @@ const boardRouter = Router();
 
 // 게시글 조회 (전체, mbti별)
 boardRouter.get(
-  '/:mbti',
+  '/:mbti?',
   asyncHandler(async (req, res, next) => {
     const category = req.params.mbti;
-    console.log(category);
-    const boards = await BoardService.getBoards(category);
+    const boards = category ? await BoardService.getBoardsByMbti(category) : await BoardService.getAllBoards();
     res.json(buildResponse(boards));
   })
 );

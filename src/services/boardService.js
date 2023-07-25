@@ -6,15 +6,15 @@ class BoardService {
   constructor(boardModel) {
     this.boardModel = boardModel;
   }
-  async getBoards(category) {
-    const boards = await this.boardModel.find(category);
-    return boards;
+  async getAllBoards() {
+    return await this.boardModel.find();
+  }
+  async getBoardsByMbti(category) {
+    return await this.boardModel.findMBTI(category);
   }
   async postBoard(board) {
-    const newBoard = await this.boardModel.create(board);
-    return newBoard;
+    return await this.boardModel.create(board);
   }
 }
 
-// module.exports = new BoardService(boardModel);
 export default new BoardService(BoardModel);

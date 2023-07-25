@@ -4,7 +4,10 @@ import { BoardSchema } from '../schemas/index.js';
 const Board = model('boards', BoardSchema);
 
 class BoardModel {
-  async find(category) {
+  async find() {
+    return await Board.find().lean();
+  }
+  async findMBTI(category) {
     return await Board.find({ category }).lean();
   }
   async create(board) {
