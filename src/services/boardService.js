@@ -12,7 +12,7 @@ class BoardService {
   async getBoardsByMbti(category) {
     return await this.boardModel.findMBTI(category);
   }
-  async postBoard(board) {
+  async addBoard(board) {
     return await this.boardModel.create(board);
   }
 }

@@ -21,7 +21,7 @@ boardRouter.post(
   '/',
   asyncHandler(async (req, res, next) => {
     const { category, content, like, dislike } = req.body;
-    const result = await BoardService.postBoard({ category, content, like, dislike });
+    const result = await BoardService.addBoard({ category, content, like, dislike });
     res.json(buildResponse({ msg: '등록 완료' }));
   })
 );
