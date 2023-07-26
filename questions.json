@@ -5,6 +5,7 @@
     "parent": "basic",
     "answer": ["주중 회사(실내)였으니 주말엔 밖에 나가서 놀아야지!", "주중 회사(실외)였으니 주말엔 집에서 쉬어야지~"],
     "mbtiType": "E",
+    "typeAnswer": "주중 회사(실내)였으니 주말엔 밖에 나가서 놀아야지!",
     "proportion": 70
   },
   {
@@ -13,6 +14,7 @@
     "parent": "basic",
     "answer": ["남은 얘기는 만나서 해야징ㅎㅎ", "휴.. 통화가 끝났으니 이제 쉬어야지.."],
     "mbtiType": "E",
+    "typeAnswer": "남은 얘기는 만나서 해야징ㅎㅎ",
     "proportion": 60
   },
   {
@@ -21,6 +23,7 @@
     "parent": "basic",
     "answer": ["상대방을 기분 좋게 하는 방법 :D", "상대방을 기분 나쁘지 않게 배려하는 방법 :)"],
     "mbtiType": "I",
+    "typeAnswer": "상대방을 기분 나쁘지 않게 배려하는 방법 :)",
     "proportion": 60
   },
   {
@@ -32,6 +35,7 @@
       "누군가 먼저 말을 걸지 않으면 웬만해선 먼저 말을 걸지 않는다."
     ],
     "mbtiType": "I",
+    "typeAnswer": "누군가 먼저 말을 걸지 않으면 웬만해선 먼저 말을 걸지 않는다.",
     "proportion": 85
   },
   {
@@ -43,6 +47,7 @@
       "비행기가 왜 흔들리지? 낙하산타고 비행기 탈출하는 모습까지 상상함ㅋㅋ"
     ],
     "mbtiType": "S",
+    "typeAnswer": "비행기가 흔들리네..? 무섭다,, 멀미난다,, ㅜㅜ",
     "proportion": 70
   },
   {
@@ -51,6 +56,7 @@
     "parent": "basic",
     "answer": ["김치찌개와 된장찌개 중 무엇을 먹을지 고민한다.", "(점심을 먹으면서) 저녁은 뭐 먹을까??"],
     "mbtiType": "S",
+    "typeAnswer": "김치찌개와 된장찌개 중 무엇을 먹을지 고민한다.",
     "proportion": 60
   },
   {
@@ -59,6 +65,7 @@
     "parent": "basic",
     "answer": ["시험이 없는 세상은 어떨까?", "단기간에 외울 수 있는 방법은 뭐가 있을까?"],
     "mbtiType": "N",
+    "typeAnswer": "시험이 없는 세상은 어떨까?",
     "proportion": 70
   },
   {
@@ -67,6 +74,7 @@
     "parent": "basic",
     "answer": ["버스 기사님은 매일 보는 이 풍경이 지루하지 않으실까?", "와 날씨 좋다! 피크닉 가고 싶네."],
     "mbtiType": "N",
+    "typeAnswer": "버스 기사님은 매일 보는 이 풍경이 지루하지 않으실까?",
     "proportion": 60
   },
 
@@ -79,6 +87,7 @@
       "내가 열심히 했는지 안했는지 너가 어떻게 알아? (기분이.. 나쁘다..)"
     ],
     "mbtiType": "T",
+    "typeAnswer": "뭐야 ㅎㅎ 그런가? (칭찬이라고 생각하고 기분 좋음 헤헤)",
     "proportion": 85
   },
   {
@@ -87,6 +96,7 @@
     "parent": "basic",
     "answer": ["주말에 뭐 하는지 궁금해!", "약속 없으면 만날 수 있어? 만나자ㅎㅎ"],
     "mbtiType": "T",
+    "typeAnswer": "주말에 뭐 하는지 궁금해!",
     "proportion": 70
   },
   {
@@ -95,6 +105,7 @@
     "parent": "basic",
     "answer": ["그렇게 하기 싫은데.. 바로 거절하면 상처받겠지?", "오 괜찮은 것 같은데!? 생각해봐야지ㅎㅎ"],
     "mbtiType": "F",
+    "typeAnswer": "그렇게 하기 싫은데.. 바로 거절하면 상처받겠지?",
     "proportion": 70
   },
   {
@@ -103,6 +114,7 @@
     "parent": "basic",
     "answer": ["왜 우울해? 무슨 일 있어??", "얼마나 잘랐어? 사진 보내봐ㅋㅋ"],
     "mbtiType": "F",
+    "typeAnswer": "왜 우울해? 무슨 일 있어??",
     "proportion": 60
   },
   {
@@ -114,7 +126,8 @@
       "모자라면 치킨 시켜 먹지 뭐~"
     ],
     "mbtiType": "P",
-    "proportion": 0
+    "typeAnswer": "모자라면 치킨 시켜 먹지 뭐~",
+    "proportion": 70
   },
   {
     "idx": 14,
@@ -122,22 +135,28 @@
     "parent": "basic",
     "answer": ["본인인증 문자는 바로 확인하거나 끝나고 지운다.", "본인인증 미리보기로 보고 쌓아둔다"],
     "mbtiType": "P",
+    "typeAnswer": "본인인증 미리보기로 보고 쌓아둔다",
     "proportion": 60
   },
   {
     "idx": 15,
-    "subject": "",
+    "subject": "약속이 취소되었을 때 나의 반응은?",
     "parent": "basic",
-    "answer": ["", ""],
+    "answer": ["아.. 아쉬운데? 다른 약속을 잡아봐야겠다!", "아싸! 집에서 쉬어야지~~"],
     "mbtiType": "J",
-    "proportion": 0
+    "typeAnswer": "아.. 아쉬운데? 다른 약속을 잡아봐야겠다!",
+    "proportion": 55
   },
   {
     "idx": 16,
-    "subject": "",
+    "subject": "친구와 제주도 여행을 가기로 했다. 이 때 나는?",
     "parent": "basic",
-    "answer": ["", ""],
+    "answer": [
+      "최적의 동선을 생각하고 계획을 세운다.",
+      "제주도는 반시계로만 돌면 되지! 지나가다 괜찮은 곳이 있으면 방문한다."
+    ],
     "mbtiType": "J",
-    "proportion": 0
+    "typeAnswer": "최적의 동선을 생각하고 계획을 세운다.",
+    "proportion": 85
   }
 ]
