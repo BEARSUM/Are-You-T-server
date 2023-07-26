@@ -20,8 +20,8 @@ boardRouter.get(
 boardRouter.post(
   '/',
   asyncHandler(async (req, res, next) => {
-    const { category, content, like, dislike } = req.body;
-    const result = await BoardService.addBoard({ category, content, like, dislike });
+    const { category, content, color, like } = req.body;
+    const result = await BoardService.addBoard({ category, content, color, like });
     res.json(buildResponse({ msg: '등록 완료' }));
   })
 );

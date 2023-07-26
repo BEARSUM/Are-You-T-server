@@ -17,14 +17,12 @@ export default new Schema(
       type: String,
       required: true,
     },
+    color: {
+      type: String,
+      required: true,
+    },
     // 공감
     like: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
-    // 비공감
-    dislike: {
       type: Number,
       required: true,
       default: 0,
