@@ -29,6 +29,11 @@ export default new Schema({
     type: String,
     required: true,
   },
+  // mbtiType에 대한 답변
+  typeAnswer: {
+    type: String,
+    required: true,
+  },
   // 중요도
   proportion: {
     type: Number,

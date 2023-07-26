@@ -19,8 +19,16 @@ questionRouter.get(
 questionRouter.post(
   '/',
   asyncHandler(async (req, res, next) => {
-    const { idx, subject, parent, answer, mbtiType, proportion } = req.body;
-    const question = await QuestionService.addQuestion({ idx, subject, parent, answer, mbtiType, proportion });
+    const { idx, subject, parent, answer, mbtiType, typeAnswer, proportion } = req.body;
+    const question = await QuestionService.addQuestion({
+      idx,
+      subject,
+      parent,
+      answer,
+      mbtiType,
+      typeAnswer,
+      proportion,
+    });
     res.json(buildResponse(question));
   })
 );
@@ -30,8 +38,16 @@ questionRouter.put(
   '/:id',
   asyncHandler(async (req, res, next) => {
     const { id } = req.params;
-    const { subject, parent, answer, mbtiType, proportion } = req.body;
-    const question = await QuestionService.updateQuestion({ id, subject, parent, answer, mbtiType, proportion });
+    const { subject, parent, answer, mbtiType, typeAnswer, proportion } = req.body;
+    const question = await QuestionService.updateQuestion({
+      id,
+      subject,
+      parent,
+      answer,
+      mbtiType,
+      typeAnswer,
+      proportion,
+    });
     res.json(buildResponse(question));
   })
 );
