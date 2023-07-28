@@ -1,9 +1,13 @@
 import { Schema } from 'mongoose';
 
 export default new Schema({
-  //
   // 16개 mbti 통계 데이터
   name: {
+    type: String,
+    required: true,
+  },
+  // 해당 mbti에 대한 특징 요약
+  summary: {
     type: String,
     required: true,
   },
