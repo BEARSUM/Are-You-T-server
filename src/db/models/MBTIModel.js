@@ -4,6 +4,9 @@ import { MBTISchema } from '../schemas/index.js';
 const MBTI = model('mbtis', MBTISchema);
 
 class MBTIModel {
+  async findAll() {
+    return await MBTI.find({}, { name: 1, count: 1 }).lean();
+  }
   // 결과값이 mbti name이긴 한데, name은 고유값이 아닐 수 있다. 이렇게 써도 될까?
   async findByName(name) {
     return await MBTI.findOne({ name }).lean();
