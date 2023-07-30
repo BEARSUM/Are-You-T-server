@@ -16,7 +16,7 @@ class QuestionModel {
   async update(questionInfo) {
     const { id, subject, parent, answer, mbtiType, typeAnswer, proportion } = questionInfo;
     return await Question.findByIdAndUpdate(id, {
-      $set: { subject, parent, answer, mbtiType, typeAnswer, proportion },
+      $set: { subject, parent, answer, mbtiType, proportion },
     });
   }
   // MBTI 테스트 문항 삭제
