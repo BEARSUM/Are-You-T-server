@@ -26,7 +26,6 @@ questionRouter.post(
       parent,
       answer,
       mbtiType,
-      typeAnswer,
       proportion,
     });
     res.json(buildResponse(question));
@@ -45,7 +44,6 @@ questionRouter.put(
       parent,
       answer,
       mbtiType,
-      typeAnswer,
       proportion,
     });
     res.json(buildResponse(question));
