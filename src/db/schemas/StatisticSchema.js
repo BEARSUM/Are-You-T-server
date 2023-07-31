@@ -36,7 +36,6 @@ export default new Schema({
         F: { type: String, default: '', required: false },
         J: { type: String, default: '', required: false },
         P: { type: String, default: '', required: false },
-        required: true,
       },
       selection: {
         E: { type: Number, default: 0, required: false },
@@ -47,7 +46,6 @@ export default new Schema({
         F: { type: Number, default: 0, required: false },
         J: { type: Number, default: 0, required: false },
         P: { type: Number, default: 0, required: false },
-        required: true,
       },
     },
   ],
