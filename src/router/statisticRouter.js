@@ -20,6 +20,7 @@ statisticRouter.put(
   '/',
   asyncHandler(async (req, res, next) => {
     const { parent, mbtiType, mbtiData } = req.body;
+    // mbti 전체 통계도 저장해야되는데 여기 로직에서 태워?
     // 없으면 추가, 있으면 수정
     const test = await StatisticService.updateStatistic({ parent, mbtiType, mbtiData });
     res.json(buildResponse(test));
