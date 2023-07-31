@@ -10,8 +10,17 @@ class BoardModel {
   async findMBTI(category) {
     return await Board.find({ category }).lean();
   }
+  async findById(id) {
+    return await Board.findById(id).lean();
+  }
   async create(board) {
     return (await Board.create(board)).toObject();
+  }
+  async updateLike(id) {
+    return (await Board.findByIdAndUpdate(id, { $inc: { like: 1 } }, { new: true })).toObject();
+  }
+  async delete(id) {
+    return (await Board.findByIdAndDelete(id)).toObject();
   }
 }
 

@@ -4,6 +4,9 @@ class MBTIService {
   constructor(mbtiModel) {
     this.mbtiModel = mbtiModel;
   }
+  async getAllMbtis() {
+    return await this.mbtiModel.findAll();
+  }
   async getMbti(name) {
     return await this.mbtiModel.findByName(name);
   }

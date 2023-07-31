@@ -6,6 +6,11 @@ export default new Schema({
     type: String,
     required: true,
   },
+  count: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
   // 해당 mbti에 대한 특징 요약
   summary: {
     type: String,
