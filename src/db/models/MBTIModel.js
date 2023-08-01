@@ -18,6 +18,11 @@ class MBTIModel {
     const { id, summary, content } = mbti;
     return (await MBTI.findByIdAndUpdate(id, { $set: { summary, content } })).toObject();
   }
+  // mbti 결과가 나오면 해당 mbti에 대해 count를 1 증가시켜준다
+  // 전체통계 조회용
+  async updateByMbti(name) {
+    return await MBTI.findOneAndUpdate({name}, { $inc: {count : 1}});
+  }
   async delete(id) {
     return await MBTI.findByIdAndDelete(id);
   }

@@ -7,10 +7,10 @@ const mbtiRouter = Router();
 
 // MBTI 결과(유형) 조회
 mbtiRouter.get(
-  '/:name?',
+  '/:name',
   asyncHandler(async (req, res, next) => {
-    const name = req.params.name;
-    const mbti = name ? await MBTIService.getMbti(name) : await MBTIService.getAllMbtis();
+    const {name} = req.params;
+    const mbti = await MBTIService.getMbti(name);
     res.json(buildResponse(mbti));
   })
 );
