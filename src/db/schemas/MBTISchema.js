@@ -16,6 +16,11 @@ export default new Schema({
     type: String,
     required: true,
   },
+  // 해당 mbti에 대한 키워드
+  tag: {
+		type: Array,
+    required: true
+  },
   content: {
     // 해당 mbti에 대한 설명
     description: {
