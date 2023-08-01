@@ -1,0 +1,66 @@
+[
+    {
+        "name": "ENTP",
+        "count": 97
+    },
+    {
+        "name": "ENFP",
+        "count": 22
+    },
+    {
+        "name": "ENTJ",
+        "count": 29
+    },
+    {
+        "name": "ENFJ",
+        "count": 57
+    },
+    {
+        "name": "ESTP",
+        "count": 33
+    },
+    {
+        "name": "ESFP",
+        "count": 2
+    },
+    {
+        "name": "ESTJ",
+        "count": 72
+    },
+    {
+        "name": "ESFJ",
+        "count": 180
+    },
+    {
+        "name": "INTP",
+        "count": 50
+    },
+    {
+        "name": "INFP",
+        "count": 3
+    },
+    {
+        "name": "INTJ",
+        "count": 81
+    },
+    {
+        "name": "INFJ",
+        "count": 12
+    },
+    {
+        "name": "ISTP",
+        "count": 53
+    },
+    {
+        "name": "ISFP",
+        "count": 18
+    },
+    {
+        "name": "ISTJ",
+        "count": 50
+    },
+    {
+        "name": "ISFJ",
+        "count": 100
+    }
+]
