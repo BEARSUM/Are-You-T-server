@@ -5,10 +5,10 @@ const Board = model('boards', BoardSchema);
 
 class BoardModel {
   async find() {
-    return await Board.find().lean();
+    return await Board.find().sort({ createdAt: -1 }).lean();
   }
   async findMBTI(category) {
-    return await Board.find({ category }).lean();
+    return await Board.find({ category }).sort({ createdAt: -1 }).lean();
   }
   async findById(id) {
     return await Board.findById(id).lean();

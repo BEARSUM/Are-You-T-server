@@ -12,6 +12,11 @@ export default new Schema(
       type: String,
       required: true,
     },
+    // 게시글 제목
+    title: {
+      type: String,
+      required: true
+    },
     // 게시글 내용
     content: {
       type: String,
