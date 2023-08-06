@@ -1,3 +1,7 @@
 import BoardService from './boardService.js';
-// const boardService = require('./boardService').default;
-export { BoardService };
+import TestService from './testService.js';
+import QuestionService from './questionService.js';
+import MBTIService from './mbtiService.js';
+import StatisticService from './statisticService.js';
+
+export { BoardService, TestService, QuestionService, MBTIService, StatisticService };

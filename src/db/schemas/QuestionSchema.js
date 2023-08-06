@@ -20,7 +20,16 @@ export default new Schema({
     // TestSchema 참조. 테스트가 어떤 테스트인지를 판별하는 요소
   },
   answer: {
-    type: Array,
+    type: {
+      E: { type: String, required: false },
+      I: { type: String, required: false },
+      N: { type: String, required: false },
+      S: { type: String, required: false },
+      T: { type: String, required: false },
+      F: { type: String, required: false },
+      J: { type: String, required: false },
+      P: { type: String, required: false },
+    },
     required: true,
   },
   // 어떤 mbti 판별에 대한 문항인지의 타입

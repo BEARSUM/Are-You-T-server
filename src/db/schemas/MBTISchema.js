@@ -1,11 +1,25 @@
 import { Schema } from 'mongoose';
 
 export default new Schema({
-  //
   // 16개 mbti 통계 데이터
   name: {
     type: String,
     required: true,
+  },
+  count: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  // 해당 mbti에 대한 특징 요약
+  summary: {
+    type: String,
+    required: true,
+  },
+  // 해당 mbti에 대한 키워드
+  tag: {
+		type: Array,
+    required: true
   },
   content: {
     // 해당 mbti에 대한 설명
