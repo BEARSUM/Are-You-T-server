@@ -17,9 +17,8 @@ const createApp = async () => {
   app.use(
     cors({
       credentials: true,
-      //origin: `http://${config.location}:${config.port}`,
-      origin: 'https://client-three-bice.vercel.app',
-      // origin: 'http://localhost:8080',
+      origin: 'http://localhost:3000',
+      // origin: 'https://client-three-bice.vercel.app'
     })
   );
 
