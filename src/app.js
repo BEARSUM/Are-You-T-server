@@ -13,14 +13,15 @@ const createApp = async () => {
   const { json: _json } = pkg;
 
   // CORS 에러 방지
-  app.use(cors());
-  // app.use(
-  //   cors({
-  //     credentials: true,
-  //     //origin: `http://${config.location}:${config.port}`,
-  //     origin: 'http://localhost:8080',
-  //   })
-  // );
+  // app.use(cors());
+  app.use(
+    cors({
+      credentials: true,
+      //origin: `http://${config.location}:${config.port}`,
+      origin: 'https://client-three-bice.vercel.app',
+      // origin: 'http://localhost:8080',
+    })
+  );
 
   // Content-Type: application/json 형태의 데이터를 인식하고 핸들링할 수 있게 함
   app.use(json());
