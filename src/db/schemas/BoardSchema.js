@@ -15,7 +15,7 @@ export default new Schema(
     // 게시글 제목
     title: {
       type: String,
-      required: true
+      required: true,
     },
     // 게시글 내용
     content: {
@@ -35,6 +35,5 @@ export default new Schema(
   },
   {
     collection: 'boards',
-    timestamps: { currentTime: () => new Date(new Date().getTime() + 1000 * 60 * 60 * 9) },
-  }
+  },
 );
