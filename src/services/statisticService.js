@@ -5,8 +5,11 @@ class StatisticService {
     this.statisticModel = statisticModel;
     this.mbtiModel = mbtiModel;
   }
-  async getStatistic(parent, mbtiType) {
-    return await this.statisticModel.findMBTI(parent, mbtiType);
+  async imsiUpdate(mbti) {
+    return await this.statisticModel.imsiUpdate(mbti);
+  }
+  async getStatistic(parent, mbtiType, answerMbtiType) {
+    return await this.statisticModel.findMBTI(parent, mbtiType, answerMbtiType);
   }
   // mbti 인원 통계 (16개유형))
   async getAllStatistic() {

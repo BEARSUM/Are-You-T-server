@@ -5,12 +5,19 @@ import { asyncHandler } from '../middlewares/index.js';
 
 const statisticRouter = Router();
 
+// 임시로 데이터 수정하려고 추가한 api
+statisticRouter.put('/update/:mbti', asyncHandler(async (req, res, next) => {
+  const { mbti } = req.params;
+  const statistics = await StatisticService.imsiUpdate(mbti);
+  res.json(buildResponse(statistics));
+}))
+
 // mbti별 통계 조회
 statisticRouter.get(
-  '/:parent/:mbti',
+  '/:parent/:mbti/:answerMbtiType',
   asyncHandler(async (req, res, next) => {
-    const { parent, mbti } = req.params;
-    const statistics = await StatisticService.getStatistic(parent, mbti);
+    const { parent, mbti, answerMbtiType } = req.params;
+    const statistics = await StatisticService.getStatistic(parent, mbti, answerMbtiType);
     res.json(buildResponse(statistics));
   })
 );
