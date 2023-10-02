@@ -35,5 +35,6 @@ export default new Schema(
   },
   {
     collection: 'boards',
+    timestamps: true
   },
 );
