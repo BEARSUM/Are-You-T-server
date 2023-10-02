@@ -47,6 +47,10 @@ export default new Schema({
         J: { type: Number, required: false },
         P: { type: Number, required: false },
       },
+      answerMbtiType: {
+        type: String,
+        required: true
+      }
     },
   ],
 });
