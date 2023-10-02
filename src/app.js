@@ -18,7 +18,7 @@ const createApp = async () => {
     cors({
       credentials: true,
       // origin: 'http://localhost:3000',
-      origin: 'https://client-are-you-t.vercel.app',
+      origin: 'https://are-you-t.vercel.app',
     })
   );
 
