@@ -8,6 +8,9 @@ class StatisticService {
   async imsiUpdate(mbti) {
     return await this.statisticModel.imsiUpdate(mbti);
   }
+  async getMbtiStatistic(parent, mbtiType) {
+    return await this.statisticModel.findMbtiStat(parent, mbtiType);
+  }
   async getStatistic(parent, mbtiType, answerMbtiType) {
     return await this.statisticModel.findMBTI(parent, mbtiType, answerMbtiType);
   }
@@ -21,6 +24,9 @@ class StatisticService {
   }
   async addStatistic(statistic) {
     return await this.statisticModel.create(statistic);
+  }
+  async addNewStatistic(statistic) {
+    return await this.statisticModel.createNew(statistic);
   }
   async updateStatistic(statisticInfo) {
     return await this.statisticModel.update(statisticInfo);

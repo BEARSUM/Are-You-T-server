@@ -49,7 +49,8 @@ statisticRouter.put(
     const { parent, mbtiType, mbtiData } = req.body;
     let createData = [];
     let result = null;
-    const stat = await StatisticService.getStatistic(parent, mbtiType);
+    const stat = await StatisticService.getMbtiStatistic(parent, mbtiType);
+    // 통계 자체가 아예 없을 경우 새로 생성하기 위함
     if (!stat) {
       // 객체를 복사한 뒤 "selection" 프로퍼티를 빈 객체로 초기화
       createData = mbtiData.map((item) => {
@@ -70,22 +71,52 @@ statisticRouter.put(
 
       result = await StatisticService.addStatistic({ parent, mbtiType, mbtiData: createData });
     } else {
+      // 일단 데이터가 있지만 특정 질문에 대해서는 데이터가 없을 수 있다.
+      // 이 때를 대비하여 없으면 새로 추가해야 한다.
+      // stat.mbtiData 배열의 객체에 idx가 없을 경우 새로 추가할것
+
+
       // 사실상 싱크 안맞을 위험이 있어서 이렇게 짜면 안됨
       // 좀 하드코딩임
       const newSelection = [];
       const selectedArr = [];
+      const indexArr = []; // 전달받은 검사지의 idx를 전달받아 저장하기 위함
       mbtiData.forEach((item) => {
         selectedArr.push(item.selected);
+        indexArr.push(item.idx);
       });
       // 여기서 seleciton 객체 받아서 selected 에 해당하는거 있으면 값 증가시켜주기
-      stat.mbtiData.forEach((item, i) => {
-        Object.keys(item.selection).forEach((key) => {
-          if (key === selectedArr[i]) {
-            item.selection[key]++;
-            item.selection['idx'] = item.idx;
-          }
-        });
-        newSelection.push(item.selection);
+      stat.mbtiData.forEach(async (item, i) => {
+        if(item.find(item => item.idx === indexArr[i])) {
+          Object.keys(item.selection).forEach((key) => {
+            if (key === selectedArr[i]) {
+              item.selection[key]++;
+              item.selection['idx'] = item.idx;
+            }
+          });
+          newSelection.push(item.selection);
+
+        } 
+        else {
+          // 문항 통계를 새로 추가해 주어야 한다.
+          // 새로 추가할 문항 및 응답에 대해 1 추가해주기
+          const newElement = mbtiData.find(item => item.idx === indexArr[i]);
+          newElement.selection = {};
+
+          const { answer, selected, selection } = newElement;
+          // selection에 key를 생성해 주고, 1을 더해준다.
+          Object.keys(answer).forEach((key) => {
+            if (!selection[key]) {
+              selection[key] = 0;
+            }
+            if (key === selected) selection[key]++;
+          });
+
+          // selected 프로퍼티 삭제
+          delete newElement.selected;
+          // 새로운 문항 추가
+          await StatisticService.addNewStatistic({parent, mbtiType, newElement});
+        }
       });
       result = await StatisticService.updateStatistic({ parent, mbtiType, newSelection });
     }
