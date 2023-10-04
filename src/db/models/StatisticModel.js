@@ -42,8 +42,11 @@ class StatisticModel {
       { arrayFilters: [ { "elem.idx": { $in: [13, 14, 15, 16] } } ] }
     );
   }
+  async findMbtiStat(parent, mbtiType) {
+    return await Statistic.findOne({ parent, mbtiType }).lean();
+  }
   async findMBTI(parent, mbtiType, answerMbtiType) {
-    
+
     // 집계함수 aggregate를 사용하여 특정 answerMbtiType에 대한 데이터만 불러온다.
 
     return await Statistic.aggregate([
@@ -67,6 +70,15 @@ class StatisticModel {
   async create(statistic) {
     return (await Statistic.create(statistic)).toObject()
   }
+  
+  async createNew(statistic) {
+    const { mbtiType, parent, newElement } = statistic;
+    return await Statistic.updateOne(
+      { mbtiType, parent },
+      { $push: { mbtiData: newElement } }
+    );
+  }
+
   async update(statisticInfo) {
     const { parent, mbtiType, newSelection } = statisticInfo;
 
