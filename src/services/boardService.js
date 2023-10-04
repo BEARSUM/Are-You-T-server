@@ -18,6 +18,9 @@ class BoardService {
   async addBoard(board) {
     return await this.boardModel.create(board);
   }
+  async updateBoard(id, board) {
+    return await this.boardModel.update(id, board);
+  }
   async updateBoardLikes(id) {
     return await this.boardModel.updateLike(id);
   }
