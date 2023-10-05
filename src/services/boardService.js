@@ -1,5 +1,5 @@
 import { BoardModel } from '../db/models/index.js';
-// import { hashPassword, randomPassword } from '../misc/utils';
+import { hashPassword, randomPassword } from '../misc/utils.js';
 // import AppError from '../misc/AppError';
 
 class BoardService {
@@ -16,10 +16,14 @@ class BoardService {
     return await this.boardModel.findById(id);
   }
   async addBoard(board) {
-    return await this.boardModel.create(board);
+    const { password, category, title, content, color } = board;
+    const hashedPassword = await hashPassword(password);
+    return await this.boardModel.create({ hashedPassword, category, title, content, color });
   }
   async updateBoard(id, board) {
-    return await this.boardModel.update(id, board);
+    const { password, category, title, content, color } = board;
+    const hashedPassword = await hashPassword(password);
+    return await this.boardModel.update(id, { hashedPassword, category, title, content, color });
   }
   async updateBoardLikes(id) {
     return await this.boardModel.updateLike(id);

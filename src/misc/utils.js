@@ -1,4 +1,4 @@
-// const bcrypt = require('bcrypt');
+import bcrypt from 'bcrypt';
 
 /* 유틸 함수들의 묶음 */
 // 데이터 클랜징용 함수, 특정 객체에서 값이 undefined인 key가 있으면 해당 key-value를 삭제한다.
@@ -23,11 +23,11 @@ function buildResponse(data, errorMessage) {
   };
 }
 
-// hashPassword = async (pw) => {
-//   const saltRounds = 10;
-//   const salt = await bcrypt.genSalt(saltRounds);
-//   return await bcrypt.hash(pw, salt);
-// };
+async function hashPassword(pw) {
+  const saltRounds = 10;
+  const salt = await bcrypt.genSalt(saltRounds);
+  return await bcrypt.hash(pw, salt);
+}
 
 function getRandomUpperCase() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
@@ -65,5 +65,5 @@ function randomPassword() {
   }
   return password;
 }
-//hashPassword
-export { sanitizeObject, buildResponse, randomPassword };
+
+export { sanitizeObject, hashPassword, buildResponse, randomPassword };
