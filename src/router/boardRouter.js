@@ -36,6 +36,17 @@ boardRouter.post(
   })
 );
 
+// 게시글 수정
+boardRouter.patch(
+  '/:id',
+  asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const { category, title, content, color } = req.body;
+    const result = await BoardService.updateBoard(id, { category, title, content, color });
+    res.json(buildResponse({ msg: '수정 완료' }));
+  })
+);
+
 // 게시글 좋아요 추가
 boardRouter.patch(
   '/post/:id',
