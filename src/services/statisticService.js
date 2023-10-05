@@ -12,7 +12,15 @@ class StatisticService {
     return await this.statisticModel.findMbtiStat(parent, mbtiType);
   }
   async getStatistic(parent, mbtiType, answerMbtiType) {
-    return await this.statisticModel.findMBTI(parent, mbtiType, answerMbtiType);
+    const stats = await this.statisticModel.findMBTIStat(parent, mbtiType);
+    const newData = {
+      _id: stats._id,
+      mbtiType: stats.mbtiType,
+      parent: stats.parent,
+      totalResponse: stats.totalResponse,
+      mbtiData: stats.mbtiData.filter((stat) => stat.answerMbtiType === answerMbtiType),
+    };
+    return newData;
   }
   // mbti 인원 통계 (16개유형))
   async getAllStatistic() {
@@ -31,7 +39,6 @@ class StatisticService {
   async updateStatistic(statisticInfo) {
     return await this.statisticModel.update(statisticInfo);
   }
-
 }
 
 export default new StatisticService(StatisticModel, MBTIModel);
