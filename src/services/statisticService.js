@@ -12,7 +12,7 @@ class StatisticService {
     return await this.statisticModel.findMbtiStat(parent, mbtiType);
   }
   async getStatistic(parent, mbtiType, answerMbtiType) {
-    const stats = await this.statisticModel.findMBTIStat(parent, mbtiType);
+    const stats = await this.statisticModel.findMbtiStat(parent, mbtiType);
     const newData = {
       _id: stats._id,
       mbtiType: stats.mbtiType,
