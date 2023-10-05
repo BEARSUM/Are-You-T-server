@@ -1,11 +1,16 @@
 import { Schema } from 'mongoose';
 
-export default new Schema(
+const BoardSchema = new Schema(
   {
     // 사용자 uuid (일단 보류.)
     uuid: {
       type: String,
       required: false,
+    },
+    // 게시글 비밀번호
+    password: {
+      type: String,
+      required: true,
     },
     // mbti 카테고리 (16개의 mbti)
     category: {
@@ -35,6 +40,8 @@ export default new Schema(
   },
   {
     collection: 'boards',
-    timestamps: true
+    timestamps: true,
   },
 );
+
+export default BoardSchema;
