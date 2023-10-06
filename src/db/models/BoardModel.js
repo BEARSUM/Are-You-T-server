@@ -13,9 +13,9 @@ class BoardModel {
   async findById(id) {
     return await Board.findById(id, { password: 0 }).lean();
   }
-  // async findByIdWithPw(id) {
-  //   return await Board.findById(id).lean();
-  // }
+  async findByIdWithPw(id) {
+    return await Board.findById(id).lean();
+  }
   async create(board) {
     const { hashedPassword, category, title, content, color } = board;
     return (await Board.create({ password: hashedPassword, category, title, content, color })).toObject();
