@@ -86,23 +86,39 @@ statisticRouter.put(
         indexArr.push(item.idx);
       });
       // 여기서 seleciton 객체 받아서 selected 에 해당하는거 있으면 값 증가시켜주기
-      stat.mbtiData.forEach(async (item, i) => {
-        if(item.find(item => item.idx === indexArr[i])) {
-          Object.keys(item.selection).forEach((key) => {
+      // indexArr에서 forEach 돌려서 stat.mbtiData의 인덱스에 들어있는지 확인
+      console.log(mbtiData);
+      indexArr.forEach(async (idx, i) => {
+        // stat.mbtiData에 들어있는 idx가 indexArr에 들어있는 idx와 같을 경우 = 이미 있는 통계 정보
+        if(stat.mbtiData.find(item => item.idx === idx)) {
+          const data = stat.mbtiData.find(item => item.idx === idx);
+          Object.keys(data.selection).forEach((key) => {
             if (key === selectedArr[i]) {
-              item.selection[key]++;
-              item.selection['idx'] = item.idx;
+              data.selection[key]++;
+              data.selection['idx'] = data.idx;
             }
           });
-          newSelection.push(item.selection);
-
-        } 
+          newSelection.push(data.selection);
+        }
         else {
           // 문항 통계를 새로 추가해 주어야 한다.
           // 새로 추가할 문항 및 응답에 대해 1 추가해주기
-          const newElement = mbtiData.find(item => item.idx === indexArr[i]);
+          const newElement = mbtiData.find(item => item.idx === idx);
           newElement.selection = {};
+          // 여기에 mbti answerType 지정해주기
+          const mbtiMapping = {
+            "E": "energy",
+            "I": "energy",
+            "S": "awareness",
+            "N": "awareness",
+            "T": "judgement",
+            "F": "judgement",
+            "J": "life",
+            "P": "life"
+          };
 
+          newElement.answerMbtiType = mbtiMapping[newElement.selected];
+          
           const { answer, selected, selection } = newElement;
           // selection에 key를 생성해 주고, 1을 더해준다.
           Object.keys(answer).forEach((key) => {
@@ -117,7 +133,8 @@ statisticRouter.put(
           // 새로운 문항 추가
           await StatisticService.addNewStatistic({parent, mbtiType, newElement});
         }
-      });
+      })
+
       result = await StatisticService.updateStatistic({ parent, mbtiType, newSelection });
     }
 
