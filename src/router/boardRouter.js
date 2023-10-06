@@ -36,6 +36,17 @@ boardRouter.post(
   }),
 );
 
+// 게시글 수정 시 비밀번호 검증
+boardRouter.post(
+  '/:id',
+  asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const { pw } = req.body;
+    const result = await BoardService.checkBoardInfo(id, pw);
+    res.json(buildResponse(result));
+  }),
+);
+
 // 게시글 수정
 boardRouter.patch(
   '/:id',
