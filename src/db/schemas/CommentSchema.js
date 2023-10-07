@@ -19,9 +19,10 @@ const CommentSchema = new Schema(
       required: false,
     },
     // 댓글 깊이
-    depth: {
+    depthCommentId: {
       type: Number,
       required: true,
+      default: 0,
     },
     // 댓글 비밀번호
     password: {
