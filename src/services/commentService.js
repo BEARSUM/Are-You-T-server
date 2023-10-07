@@ -11,7 +11,13 @@ class CommentService {
     return await this.commentModel.findByBoardId(boardId);
   }
   async addComment(comment) {
-    const { boardId, depthCommentId, depth, password, content, color } = comment;
+    const { boardId, depthCommentId, password, content, color } = comment;
+    // depth 결정
+    if (depthCommentId) {
+      // TODO: commentId가 존재할 경우 부모 댓글이 있다는 뜻이므로 조회해서 depth를 결정해야 한다.
+    }
+    const depth = 0;
+
     const hashedPassword = await hashPassword(password);
     return await this.commentModel.create({ boardId, depthCommentId, depth, hashedPassword, content, color });
   }
