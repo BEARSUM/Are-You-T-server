@@ -17,10 +17,9 @@ commentRouter.get(
 
 // 댓글 작성
 commentRouter.post(
-  '/:boardId',
+  '/',
   asyncHandler(async (req, res, next) => {
-    const { boardId } = req.params;
-    const { depthCommentId, password, content, color } = req.body;
+    const { boardId, depthCommentId, password, content, color } = req.body;
     const result = await CommentService.addComment({ boardId, depthCommentId, password, content, color });
     res.json(buildResponse({ msg: '등록 완료' }));
   })
