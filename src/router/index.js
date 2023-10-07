@@ -15,6 +15,6 @@ v1Router.use('/test', testRouter);
 v1Router.use('/question', questionRouter);
 v1Router.use('/mbti', mbtiRouter);
 v1Router.use('/stats', statisticRouter);
-v1Router.use('/comments', commentRouter);
+v1Router.use('/comment', commentRouter);
 
 export const v1 = v1Router;
