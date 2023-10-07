@@ -19,7 +19,7 @@ const CommentSchema = new Schema(
       required: false,
     },
     // 댓글 깊이
-    depthCommentId: {
+    depth: {
       type: Number,
       required: true,
       default: 0,
