@@ -4,10 +4,37 @@ import { BoardSchema } from '../schemas/index.js';
 const Board = model('boards', BoardSchema);
 
 class BoardModel {
-  async find() {
-    return await Board.find({}, { password: 0 }).sort({ createdAt: -1 }).lean();
+  async find(boardInfo) {
+    const { count, skip } = boardInfo;
+
+    return await Board.aggregate([
+      { $sort: { createdAt: -1 } },
+      { $skip: skip },
+      { $limit: count },
+      {
+        $project: {
+          password: 0, // 비밀번호 제외
+        },
+      },
+    ]);
+
+    // return await Board.find({}, { password: 0 }).sort({ createdAt: -1 }).lean();
   }
-  async findMBTI(category) {
+  async findMBTI(boardInfo) {
+    const { category, count, skip } = boardInfo;
+
+    return await Board.aggregate([
+      { $match: { category } },
+      { $sort: { createdAt: -1 } },
+      { $skip: skip },
+      { $limit: count },
+      {
+        $project: {
+          password: 0, // 비밀번호 제외
+        },
+      },
+    ]);
+
     return await Board.find({ category }, { password: 0 }).sort({ createdAt: -1 }).lean();
   }
   async findById(id) {

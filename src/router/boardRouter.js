@@ -11,9 +11,12 @@ boardRouter.get(
   '/:mbti?',
   asyncHandler(async (req, res, next) => {
     const category = req.params.mbti;
-    const boards = category ? await BoardService.getBoardsByMbti(category) : await BoardService.getBoards();
+    const { count, skip } = req.body;
+    const boards = category
+      ? await BoardService.getBoardsByMbti({ category, count, skip })
+      : await BoardService.getBoards({ count, skip });
     res.json(buildResponse(boards));
-  }),
+  })
 );
 
 // 특정 게시글 조회
@@ -23,7 +26,7 @@ boardRouter.get(
     const { id } = req.params;
     const board = await BoardService.getBoard(id);
     res.json(buildResponse(board));
-  }),
+  })
 );
 
 // 게시글 작성
@@ -33,7 +36,7 @@ boardRouter.post(
     const { password, category, title, content, color } = req.body;
     const result = await BoardService.addBoard({ password, category, title, content, color });
     res.json(buildResponse({ msg: '등록 완료' }));
-  }),
+  })
 );
 
 // 게시글 수정 시 비밀번호 검증
@@ -44,7 +47,7 @@ boardRouter.post(
     const { pw } = req.body;
     const result = await BoardService.checkBoardInfo(id, pw);
     res.json(buildResponse(result));
-  }),
+  })
 );
 
 // 게시글 수정
@@ -55,7 +58,7 @@ boardRouter.patch(
     const { password, category, title, content, color } = req.body;
     const result = await BoardService.updateBoard(id, { password, category, title, content, color });
     res.json(buildResponse({ msg: '수정 완료' }));
-  }),
+  })
 );
 
 // 게시글 좋아요 추가
@@ -65,7 +68,7 @@ boardRouter.patch(
     const { id } = req.params;
     const result = await BoardService.updateBoardLikes(id);
     res.json(buildResponse(result));
-  }),
+  })
 );
 
 boardRouter.delete(
@@ -74,7 +77,7 @@ boardRouter.delete(
     const { id } = req.params;
     const result = await BoardService.deleteBoard(id);
     res.json(buildResponse(result));
-  }),
+  })
 );
 
 export default boardRouter;

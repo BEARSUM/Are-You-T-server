@@ -7,11 +7,11 @@ class BoardService {
   constructor(boardModel) {
     this.boardModel = boardModel;
   }
-  async getBoards() {
-    return await this.boardModel.find();
+  async getBoards(boardInfo) {
+    return await this.boardModel.find(boardInfo);
   }
-  async getBoardsByMbti(category) {
-    return await this.boardModel.findMBTI(category);
+  async getBoardsByMbti(boardInfo) {
+    return await this.boardModel.findMBTI(boardInfo);
   }
   async getBoard(id) {
     return await this.boardModel.findById(id);
