@@ -5,12 +5,11 @@ const Board = model('boards', BoardSchema);
 
 class BoardModel {
   async find(boardInfo) {
-    const { count, skip } = boardInfo;
-
+    const { limit, skip } = boardInfo;
     return await Board.aggregate([
       { $sort: { createdAt: -1 } },
       { $skip: skip },
-      { $limit: count },
+      { $limit: limit },
       {
         $project: {
           password: 0, // 비밀번호 제외
@@ -21,13 +20,13 @@ class BoardModel {
     // return await Board.find({}, { password: 0 }).sort({ createdAt: -1 }).lean();
   }
   async findMBTI(boardInfo) {
-    const { category, count, skip } = boardInfo;
+    const { category, limit, skip } = boardInfo;
 
     return await Board.aggregate([
       { $match: { category } },
       { $sort: { createdAt: -1 } },
       { $skip: skip },
-      { $limit: count },
+      { $limit: limit },
       {
         $project: {
           password: 0, // 비밀번호 제외

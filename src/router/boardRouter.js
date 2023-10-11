@@ -11,10 +11,12 @@ boardRouter.get(
   '/:mbti?',
   asyncHandler(async (req, res, next) => {
     const category = req.params.mbti;
-    const { count, skip } = req.body;
+    const { count, skipCount } = req.query;
+    const limit = Number(count);
+    const skip = Number(skipCount);
     const boards = category
-      ? await BoardService.getBoardsByMbti({ category, count, skip })
-      : await BoardService.getBoards({ count, skip });
+      ? await BoardService.getBoardsByMbti({ category, limit, skip })
+      : await BoardService.getBoards({ limit, skip });
     res.json(buildResponse(boards));
   })
 );
