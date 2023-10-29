@@ -11,7 +11,12 @@ boardRouter.get(
   '/:mbti?',
   asyncHandler(async (req, res, next) => {
     const category = req.params.mbti;
-    const boards = category ? await BoardService.getBoardsByMbti(category) : await BoardService.getBoards();
+    const { count, skipCount } = req.query;
+    const limit = Number(count);
+    const skip = Number(skipCount);
+    const boards = category
+      ? await BoardService.getBoardsByMbti({ category, limit, skip })
+      : await BoardService.getBoards({ limit, skip });
     res.json(buildResponse(boards));
   })
 );
@@ -30,9 +35,31 @@ boardRouter.get(
 boardRouter.post(
   '/',
   asyncHandler(async (req, res, next) => {
-    const { category, title, content, color } = req.body;
-    const result = await BoardService.addBoard({ category, title, content, color });
+    const { password, category, title, content, color } = req.body;
+    const result = await BoardService.addBoard({ password, category, title, content, color });
     res.json(buildResponse({ msg: '등록 완료' }));
+  })
+);
+
+// 게시글 수정 시 비밀번호 검증
+boardRouter.post(
+  '/:id',
+  asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const { pw } = req.body;
+    const result = await BoardService.checkBoardInfo(id, pw);
+    res.json(buildResponse(result));
+  })
+);
+
+// 게시글 수정
+boardRouter.patch(
+  '/:id',
+  asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const { password, category, title, content, color } = req.body;
+    const result = await BoardService.updateBoard(id, { password, category, title, content, color });
+    res.json(buildResponse({ msg: '수정 완료' }));
   })
 );
 

@@ -1,37 +1,45 @@
 import { Schema } from 'mongoose';
 
-const BoardSchema = new Schema(
+const CommentSchema = new Schema(
   {
     // 사용자 uuid (일단 보류.)
     uuid: {
       type: String,
       required: false,
     },
-    // 게시글 비밀번호
+    // 게시글 Id
+    boardId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Board',
+      required: true,
+    },
+    depthCommentId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Comment',
+      required: false,
+    },
+    // 댓글 깊이
+    depth: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    // 댓글 비밀번호
     password: {
       type: String,
       required: true,
     },
-    // mbti 카테고리 (16개의 mbti)
-    category: {
-      type: String,
-      required: true,
-    },
-    // 게시글 제목
-    title: {
-      type: String,
-      required: true,
-    },
-    // 게시글 내용
+    // 댓글 내용
     content: {
       type: String,
       required: true,
     },
+    // 댓글 프로필 색상
     color: {
       type: String,
       required: true,
     },
-    // 공감
+    // 공감 (좋아요)
     like: {
       type: Number,
       required: true,
@@ -39,9 +47,9 @@ const BoardSchema = new Schema(
     },
   },
   {
-    collection: 'boards',
+    collection: 'comments',
     timestamps: true,
-  },
+  }
 );
 
-export default BoardSchema;
+export default CommentSchema;
