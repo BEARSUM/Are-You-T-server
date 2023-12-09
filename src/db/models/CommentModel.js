@@ -35,6 +35,9 @@ class CommentModel {
   async delete(id) {
     return (await Comment.findByIdAndDelete(id)).toObject();
   }
+  async deleteAll(id) {
+    return await Comment.deleteMany({ boardId: id });
+  }
 }
 
 export default new CommentModel();
