@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --watch 'bin/*' --watch 'src/*' bin/index.js"
+    "start": "nodemon --watch 'api/*' --watch 'src/*' api/index.js"
   },
   "author": "",
   "license": "ISC",
