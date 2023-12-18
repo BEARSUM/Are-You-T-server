@@ -81,4 +81,4 @@ const createApp = async () => {
   return serverApp;
 };
 
-export { createApp };
+module.exports = createApp;

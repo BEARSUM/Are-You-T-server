@@ -1,11 +1,12 @@
-import { BoardModel } from '../db/models/index.js';
+import { BoardModel, CommentModel } from '../db/models/index.js';
 import bcrypt from 'bcrypt';
 import { hashPassword } from '../misc/utils.js';
 import AppError from '../misc/AppError.js';
 
 class BoardService {
-  constructor(boardModel) {
+  constructor(boardModel, commentModel) {
     this.boardModel = boardModel;
+    this.commentModel = commentModel;
   }
   async getBoards(boardInfo) {
     return await this.boardModel.find(boardInfo);
@@ -39,8 +40,9 @@ class BoardService {
     return await this.boardModel.updateLike(id);
   }
   async deleteBoard(id) {
+    const data = await this.commentModel.deleteAll(id);
     return await this.boardModel.delete(id);
   }
 }
 
-export default new BoardService(BoardModel);
+export default new BoardService(BoardModel, CommentModel);

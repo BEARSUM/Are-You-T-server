@@ -6,7 +6,7 @@ const Comment = model('comments', CommentSchema);
 class CommentModel {
   // boardId로 해당 board의 댓글 전부 조회
   async findByBoardId(boardId) {
-    return await Comment.find({ boardId }, { password: 0 }).sort({ createdAt: -1 }).lean();
+    return await Comment.find({ boardId }, { password: 0 }).sort({ createdAt: 1 }).lean();
   }
   //   async findById(id) {
   //     return await Comment.findById(id, { password: 0 }).lean();
@@ -34,6 +34,9 @@ class CommentModel {
   // 댓글 삭제
   async delete(id) {
     return (await Comment.findByIdAndDelete(id)).toObject();
+  }
+  async deleteAll(id) {
+    return await Comment.deleteMany({ boardId: id });
   }
 }
 
